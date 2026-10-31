@@ -80,4 +80,4 @@ Validated on Windows with Python 3.13.5, NumPy 2.1.3, SciPy 1.15.3, scikit-learn
 
 The existing MIT code license is retained; datasets and models retain their own licenses.
 
-Executed checks: four-case suites; exact stochastic posterior with 1/4 and 3/4 likelihoods; a status-channel counterexample; continuation rescue from a greedy dead end; single completion reward; durable replay and uncertain-session rejection; source checks, statistics and plots. Full adapted benchmarks and real service effects were not run.
+Executed checks: six regression tests, including rational-string kernel execution and JSON round-trip equality; four-case suites for all five methods; exact stochastic posterior with 1/4 and 3/4 likelihoods; a status-channel counterexample; continuation rescue from a greedy dead end; single completion reward; durable replay and uncertain-session rejection; statistics and plots. Full adapted benchmarks and real service effects were not run.

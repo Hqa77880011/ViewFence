@@ -234,7 +234,9 @@ def run_case(case, method, initial_belief=None, actual_state=None, step_hook=Non
         if step_hook is not None:
             step_hook("reserve", observer, state)
         rows = transitions(action, world, state)
-        row = rng.choices(rows, weights=[float(item["probability"]) for item in rows], k=1)[0]
+        row = rng.choices(
+            rows, weights=[float(Fraction(str(item["probability"]))) for item in rows], k=1
+        )[0]
         event = row["event"]
         observed_key = key(event)
         observer = next(post for k, _, post in branches(observer, action) if k == observed_key)

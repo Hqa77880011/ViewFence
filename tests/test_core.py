@@ -5,6 +5,18 @@ from viewfence import core
 
 
 class DisclosureTests(unittest.TestCase):
+    def test_rational_kernel_executes_and_survives_json_roundtrip(self):
+        import json
+        case = next(core.generate(random.Random(17), 1))
+        for action in case['actions']:
+            for table in action['worlds']:
+                for rows in table.values():
+                    for row in rows:
+                        row['probability'] = '1/1'
+        result = core.run_case(case, 'viewfence')
+        self.assertTrue(result['completed'])
+        self.assertEqual(result, core.run_case(json.loads(json.dumps(case)), 'viewfence'))
+
     def test_side_channel_is_checked_even_when_body_is_constant(self):
         case = next(core.generate(random.Random(17), 1))
         action = case['actions'][2]
